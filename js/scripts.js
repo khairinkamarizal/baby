@@ -1,17 +1,7 @@
 ﻿( function($) {
   'use strict';
 
-
 	$(window).on('load', function(){
-
-
-
-		/*-------------------------------------------------------------------------------
-		  Wow.js
-		-------------------------------------------------------------------------------*/
-
-
-
 		$('.loader').fadeOut(1000);
 		var wow = new WOW({
 		    offset: 150,          
@@ -21,49 +11,27 @@
 		
 		wow.init();
 	});
-
-
-
-	/*-------------------------------------------------------------------------------
-	   Animsition Loader
-	-------------------------------------------------------------------------------*/
-
-
-
+	
 	$(".animsition").animsition({
 	   inClass: 'fade-in',
        outClass: 'fade-out',
 	   inDuration: 1000,
 	   outDuration: 700,
 	   linkElement: 'a.project-box',
-	   // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
 	   loading:true,
-	   loadingParentElement: 'body', //animsition wrapper element
+	   loadingParentElement: 'body',
 	   loadingClass: 'spinner',
-	   loadingInner: '<div class="double-bounce1"></div><div class="double-bounce2"></div>', // e.g '<img src="loading.svg" />'
+	   loadingInner: '<div class="double-bounce1"></div><div class="double-bounce2"></div>',
 	   timeout: false,
 	   timeoutCountdown:5000,
 	   onLoadEvent: true,
 	   browser: [ 'animation-duration', '-webkit-animation-duration'],
-	   // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
-	   // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
 	   overlay : false,
 	   overlayClass : 'animsition-overlay-slide',
 	   overlayParentElement : 'body',
 	   transition: function(url){ window.location.href = url; }
 	});
 
-
-
-	$('.popup-youtube').magnificPopup({
-		disableOn: 700,
-		type: 'iframe',
-		mainClass: 'mfp-with-zoom',
-		removalDelay: 160,
-		preloader: false,
-
-		fixedContentPos: false
-	});
 
     $(document).ready(function() {
 
@@ -90,24 +58,17 @@
 		closeOnContentClick: true,
 		closeBtnInside: false,
 		fixedContentPos: true,
-		mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+		mainClass: 'mfp-no-margins mfp-with-zoom',
 		image: {
 			verticalFit: true
 		},
 		zoom: {
 			enabled: true,
-			duration: 300 // don't foget to change the duration also in CSS
+			duration: 300 //
 		}
 	});
 
 });
-
-
-	/*-------------------------------------------------------------------------------
-	  Menu
-	-------------------------------------------------------------------------------*/
-
-
 
 	$('.navbar-toggle').on('click',function(){
 		$('body').removeClass('menu-is-closed').addClass('menu-is-opened');
@@ -134,11 +95,6 @@
 	});
 
 
-	/*-------------------------------------------------------------------------------
-	  Owl Carousel
-	-------------------------------------------------------------------------------*/
-
-
 	if ($('.owl-carousel').length > 0){
 
 	   $(".review-carousel").owlCarousel({
@@ -162,14 +118,6 @@
 		});
 
 	}
-
-
-
-
-	/*-------------------------------------------------------------------------------
-	  Full screen sections 
-	-------------------------------------------------------------------------------*/
-
 
 	function navbarFullpage(){
 	 if ( $('.pp-section.active').scrollTop() > 0 ){
@@ -220,14 +168,6 @@
 		}
 	});
 
-
-
-	/*------------------------------------------------------------------------------
-	   Scroller navigation
-	/-------------------------------------------------------------------------------*/
-
-
-
 		$('#pp-nav').remove().appendTo('.animsition').addClass('white right-boxed hidden-xs');
 
 		$('.pp-nav-up').on('click', function(){
@@ -237,23 +177,6 @@
 		$('.pp-nav-down').on('click', function(){
 			$.fn.pagepiling.moveSectionDown();
 		});
- 
-
-
-
-    /*-------------------------------------------------------------------------------
-	  Change bacgkround on project section
-	-------------------------------------------------------------------------------*/
-
-
-
-    $('.project-row a').on('mouseover',function(){
-    	var index = $('.project-row a').index(this)
-    	$('.project-row a').removeClass('active');
-    	$(this).addClass('active');
-    	$('.bg-changer .section-bg').removeClass('active').eq(index).addClass('active');
-    });
-
 
 })(jQuery);
 
@@ -316,15 +239,6 @@ owl.owlCarousel({
     }
 });
 
-owl.on('mousewheel', '.owl-stage', function (e) {
-    if (e.deltaY>0) {
-        owl.trigger('next.owl');
-    } else {
-        owl.trigger('prev.owl');
-    }
-    e.preventDefault();
-});
-
 var links = document.querySelectorAll(".gallery li a");
 var gallery = document.getElementsByClassName("gallery")[0];
 var gallerSingleElem = document.getElementsByClassName("gallery-single")[0];
@@ -333,7 +247,6 @@ var image = "";
 var title = "";
 var desc = "";
 
-// Filter starts here
 var filterBtns = document.querySelectorAll(".filter li button");
 var items = document.querySelectorAll(".gallery li");
 var filterSelected = "";
@@ -341,13 +254,11 @@ var itemsHidden;
 
 filterBtns.forEach(function(filterBtn) {
   filterBtn.addEventListener("click", function(e) {
-    // Filter button active
     filterBtns.forEach(function(item) {
       item.parentNode.classList.remove("active");
     });
     this.parentNode.classList.add("active");
 
-    // reset
     items.forEach(function(item) {
       item.classList.remove("hidden");
       setTimeout(function() {
@@ -356,7 +267,6 @@ filterBtns.forEach(function(filterBtn) {
     });
     filterSelected = this.getAttribute("data-filter");
 
-    // hide rest of the items
     if (filterSelected != "all" && filterSelected !== "") {
       itemsHidden = document.querySelectorAll(
         ".gallery li:not([data-filter='" + filterSelected + "'])"
@@ -377,13 +287,11 @@ filterBtns.forEach(function(filterBtn) {
     }
   });
 });
-// Filter ends here
 
 (function() {
 
     var slidersContainer = document.querySelector('.sliders-container');
 
-    // Initializing the numbers slider
     var msNumbers = new MomentumSlider({
         el: slidersContainer,
         cssClass: 'ms--numbers',
@@ -398,10 +306,9 @@ filterBtns.forEach(function(filterBtn) {
         interactive: false
     });
 
-    // Initializing the titles slider
     var titles = [
         'Illustration',
-        '3D Modelling',
+        '3D Modeling',
         'Photography',
         'Digital Marketing',
         'Video Editing'
@@ -421,7 +328,6 @@ filterBtns.forEach(function(filterBtn) {
         interactive: false
     });
 
-    // Initializing the links slider
     var msLinks = new MomentumSlider({
         el: slidersContainer,
         cssClass: 'ms--links',
@@ -433,30 +339,22 @@ filterBtns.forEach(function(filterBtn) {
         interactive: false
     });
 
-    // Get pagination items
     var pagination = document.querySelector('.pagination');
     var paginationItems = [].slice.call(pagination.children);
 
-    // Initializing the images slider
     var msImages = new MomentumSlider({
-        // Element to append the slider
         el: slidersContainer,
-        // CSS class to reference the slider
         cssClass: 'ms--images',
-        // Generate the 4 slides required
         range: [0, 4],
         rangeContent: function () {
             return '<div class="ms-slide__image-container"><a href="portfolio.html"><div class="ms-slide__image"></div></a></div>';
         },
-        // Syncronize the other sliders
         sync: [msNumbers, msTitles, msLinks],
-        // Styles to interpolate as we move the slider
         style: {
             '.ms-slide__image': {
                 transform: [{scale: [1.5, 1]}]
             }
         },
-        // Update pagination if slider change
         change: function(newIndex, oldIndex) {
             if (typeof oldIndex !== 'undefined') {
                 paginationItems[oldIndex].classList.remove('pagination__item--active');
@@ -465,7 +363,6 @@ filterBtns.forEach(function(filterBtn) {
         }
     });
 
-    // Select corresponding slider item when a pagination button is clicked
     pagination.addEventListener('click', function(e) {
         if (e.target.matches('.pagination__button')) {
             var index = paginationItems.indexOf(e.target.parentNode);
