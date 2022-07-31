@@ -31,7 +31,16 @@
 	   overlayParentElement : 'body',
 	   transition: function(url){ window.location.href = url; }
 	});
+	
+	 $('.popup-youtube').magnificPopup({
+		disableOn: 700,
+		type: 'iframe',
+		mainClass: 'mfp-with-zoom',
+		removalDelay: 160,
+		preloader: false,
 
+		fixedContentPos: false
+	});
 
     $(document).ready(function() {
 
